@@ -1,0 +1,16 @@
+body {
+    background-size: 100%;
+    background: url("static/images/background.jpeg") repeat-y fixed center center;
+}
+
+
+.selectCstm {
+    text-align-last: center;
+}
+
+.titleCstm {
+    text-align: center;
+    background-color: darkslategrey;
+    color: aliceblue;
+    font-family: monospace;
+}

@@ -1,0 +1,120 @@
+
+<html>
+<head>
+    <title>Used car price prediction system</title>
+	<script crossorigin="anonymous" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" rel="stylesheet">
+    <link href="{{ url_for('static', filename='site.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+<body>
+
+<div class="login container">
+    <div class="row col-12 ">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 card" style="opacity:0.9;">
+            <h1 class="titleCstm pt-3 pb-2">Used Vehicle Price Prediction</h1>
+            <div class="card-details" style="font-family: emoji;">
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="make">Make : </label>
+                    <!--						<input type="text" class="form-control col-md-10" name="make" id="make" >-->
+                    <select class="form-control col-md-9 selectCstm" id="make" name="make" style="margin-left:45px;"
+                            type="text">
+                        <option selected>- Select Make -</option>
+                        <option>Audi</option>
+                        <option>Austin</option>
+                        <option>BMW</option>
+                        <option>Chery</option>
+                        <option>Chevrolet</option>
+                        <option>Daewoo</option>
+                        <option>Daihatsu</option>
+                        <option>Datsun</option>
+                        <option>DFSK</option>
+                        <option>Fiat</option>
+                        <option>Ford</option>
+                        <option>Honda</option>
+                        <option>Hyundai</option>
+                        <option>Isuzu</option>
+                        <option>Jaguar</option>
+                        <option>Kia</option>
+                        <option>Mahindra</option>
+                        <option>Mazda</option>
+                        <option>Mercedes Benz</option>
+                        <option>Micro</option>
+                        <option>Mitsubishi</option>
+                        <option>Morris</option>
+                        <option>Nissan</option>
+                        <option>Opel</option>
+                        <option>Perodua</option>
+                        <option>Peugeot</option>
+                        <option>Proton</option>
+                        <option>Renault</option>
+                        <option>Subaru</option>
+                        <option>Suzuki</option>
+                        <option>Tata</option>
+                        <option>Toyota</option>
+                        <option>Volkswagen</option>
+                        <option>Volvo</option>
+                        <option>Zotye</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="model">Model : </label>
+                    <!--						<input type="text" class="form-control col-md-10" name="model" id="model" >-->
+                    <select class="form-control col-md-9 selectCstm" id="model" name="model" style="margin-left:40px;"
+                            type="text">
+                        <option selected>- Select Model -</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="model_year">Model Year : </label>
+                    <select class="form-control col-md-9 selectCstm" id="model_year" name="model_year"
+                            style="margin-left:10px;" type="text">
+                        <option selected>- Select Year -</option>
+
+
+                    </select>
+                </div>
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="transmission">Transmission : </label>
+                    <select class="form-control col-md-9 selectCstm" id="transmission" name="transmission" type="text">
+                        <option selected value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-form-label mr-1" for="fuel_type">Fuel Type : </label>
+                    <select class="form-control col-md-10 selectCstm" id="fuel_type" name="fuel_type" type="text">
+                        <option selected value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                </div>
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="engine_capacity">Engine Capacity (cc) : </label>
+                    <input class="form-control col-md-8" id="engine_capacity" name="engine_capacity" required
+                           type="text">
+                </div>
+                <div class="form-group form-inline ">
+                    <label class="col-form-label mr-4" for="mileage">Mileage (km) : </label>
+                    <input class="form-control col-md-9" id="mileage" name="mileage" required type="text">
+                </div>
+                <input class="btn btn-primary btn-block mt-4 mb-2" id="predictBtn" type="button" value="Predict price">
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row col-12 ">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 card mt-3 p-5 d-block" style="opacity:0.9;font-size:20px;">
+            <strong>Predicted Price : <span id="predictedTxt"></span></strong>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+<script src="{{ url_for('static',filename='site.js') }}"></script>
+</body>
+</html>
